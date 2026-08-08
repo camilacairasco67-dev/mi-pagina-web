@@ -1,48 +1,583 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChocoArte - Figuras de Chocolate</title>
+
+    <title>ChocoArt - Figuras de Chocolate</title>
+
+    <!-- Tipografía Playfair Display -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+    <style>
+
+        /* =========================
+           PALETA DE COLORES
+        ========================= */
+
+        :root {
+
+            --chocolate: #3D2314;
+
+            --crema: #FFDD00;
+
+            --dorado: #D4AF37;
+
+            --texto: #3D2314;
+
+        }
+
+
+        /* =========================
+           CONFIGURACIÓN GENERAL
+        ========================= */
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+        html {
+
+            scroll-behavior: smooth;
+
+        }
+
+
+        body {
+
+            font-family: "Playfair Display", serif;
+
+            background-color: var(--crema);
+
+            color: var(--texto);
+
+            line-height: 1.7;
+
+        }
+
+
+        /* =========================
+           ENCABEZADO / NAV
+        ========================= */
+
+        header {
+
+            background-color: var(--chocolate);
+
+            color: var(--crema);
+
+            padding: 20px 8%;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            border-bottom: 2px solid var(--dorado);
+
+        }
+
+
+        header h2 {
+
+            color: var(--dorado);
+
+            font-size: 30px;
+
+            font-weight: 600;
+
+        }
+
+
+        nav ul {
+
+            list-style: none;
+
+            display: flex;
+
+            gap: 30px;
+
+        }
+
+
+        nav a {
+
+            color: var(--crema);
+
+            text-decoration: none;
+
+            font-size: 17px;
+
+            transition: 0.3s;
+
+        }
+
+
+        nav a:hover {
+
+            color: var(--dorado);
+
+        }
+
+
+        /* =========================
+           INICIO
+        ========================= */
+
+        #inicio {
+
+            min-height: 80vh;
+
+            background-color: var(--chocolate);
+
+            color: var(--crema);
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+
+            padding: 60px 20px;
+
+        }
+
+
+        #inicio h1 {
+
+            color: var(--dorado);
+
+            font-size: clamp(40px, 7vw, 70px);
+
+            max-width: 900px;
+
+            line-height: 1.2;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        #inicio p {
+
+            max-width: 750px;
+
+            font-size: 20px;
+
+            color: var(--crema);
+
+        }
+
+
+        /* =========================
+           CATÁLOGO
+        ========================= */
+
+        #catalogo {
+
+            background-color: var(--crema);
+
+            padding: 90px 8%;
+
+            text-align: center;
+
+        }
+
+
+        #catalogo > h2 {
+
+            color: var(--chocolate);
+
+            font-size: 42px;
+
+            margin-bottom: 50px;
+
+        }
+
+
+        article {
+
+            background-color: var(--chocolate);
+
+            color: var(--crema);
+
+            max-width: 850px;
+
+            margin: 25px auto;
+
+            padding: 35px;
+
+            border: 1px solid var(--dorado);
+
+            border-radius: 12px;
+
+            transition: 0.3s;
+
+        }
+
+
+        article:hover {
+
+            transform: translateY(-5px);
+
+            box-shadow: 0 10px 25px rgba(61, 35, 20, 0.3);
+
+        }
+
+
+        article h3 {
+
+            color: var(--dorado);
+
+            font-size: 27px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        article p {
+
+            font-size: 17px;
+
+        }
+
+
+        /* =========================
+           CONTACTO
+        ========================= */
+
+        #contacto {
+
+            background-color: var(--chocolate);
+
+            color: var(--crema);
+
+            padding: 70px 20px;
+
+            text-align: center;
+
+        }
+
+
+        #contacto h2 {
+
+            color: var(--dorado);
+
+            font-size: 40px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        #contacto p {
+
+            font-size: 18px;
+
+            margin: 10px;
+
+        }
+
+
+        /* =========================
+           PIE DE PÁGINA
+        ========================= */
+
+        footer {
+
+            background-color: var(--chocolate);
+
+            color: var(--crema);
+
+            text-align: center;
+
+            padding: 30px 20px;
+
+            border-top: 1px solid var(--dorado);
+
+        }
+
+
+        footer p {
+
+            margin: 8px;
+
+        }
+
+
+        footer strong {
+
+            color: var(--dorado);
+
+        }
+
+
+        /* =========================
+           CELULAR
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            header {
+
+                flex-direction: column;
+
+                gap: 15px;
+
+            }
+
+
+            nav ul {
+
+                gap: 15px;
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+            }
+
+
+            nav a {
+
+                font-size: 14px;
+
+            }
+
+
+            #inicio {
+
+                min-height: 75vh;
+
+            }
+
+
+            #inicio h1 {
+
+                font-size: 40px;
+
+            }
+
+
+            #inicio p {
+
+                font-size: 17px;
+
+            }
+
+
+            #catalogo {
+
+                padding: 70px 20px;
+
+            }
+
+
+            #catalogo > h2 {
+
+                font-size: 34px;
+
+            }
+
+
+            article {
+
+                padding: 25px 20px;
+
+            }
+
+        }
+
+    </style>
+
 </head>
+
+
 <body>
 
+
+    <!-- =========================
+         ENCABEZADO
+    ========================== -->
+
     <header>
-        <h2>ChocoArte</h2>
+
+        <h2>ChocoArt</h2>
+
+
         <nav>
+
             <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#catalogo">Catálogo</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+
+                <li>
+                    <a href="#inicio">Inicio</a>
+                </li>
+
+                <li>
+                    <a href="#catalogo">Catálogo</a>
+                </li>
+
+                <li>
+                    <a href="#contacto">Contacto</a>
+                </li>
+
             </ul>
+
         </nav>
+
     </header>
 
+
+
+    <!-- =========================
+         CONTENIDO PRINCIPAL
+    ========================== -->
+
     <main>
+
+
+        <!-- INICIO -->
+
         <section id="inicio">
-            <h1>Chocolates Artesanales Moldeados a Mano</h1>
-            <p>Creamos figuras únicas y personalizadas en chocolate de alta calidad para endulzar tus momentos especiales.</p>
+
+            <h1>
+                Chocolates Artesanales
+                Moldeados a Mano
+            </h1>
+
+
+            <p>
+                Creamos figuras únicas y personalizadas
+                en chocolate de alta calidad para
+                endulzar tus momentos especiales.
+            </p>
+
         </section>
+
+
+
+        <!-- CATÁLOGO -->
 
         <section id="catalogo">
-            <h2>Nuestras Figuras Destacadas</h2>
-            
-            <article>
-                <h3>Figuras de Colección</h3>
-                <p>Moldes detallados elaborados con chocolate semiamargo y acabados dorados comestibles.</p>
-            </article>
+
+            <h2>
+                Nuestras Figuras Destacadas
+            </h2>
+
 
             <article>
-                <h3>Detalles Personalizados</h3>
-                <p>Diseños a medida para eventos, regalos especiales y fechas inolvidables.</p>
+
+                <h3>
+                    Figuras de Colección
+                </h3>
+
+
+                <p>
+                    Moldes detallados elaborados con
+                    chocolate semiamargo y acabados
+                    dorados comestibles.
+                </p>
+
             </article>
+
+
+
+            <article>
+
+                <h3>
+                    Detalles Personalizados
+                </h3>
+
+
+                <p>
+                    Diseños a medida para eventos,
+                    regalos especiales y fechas
+                    inolvidables.
+                </p>
+
+            </article>
+
         </section>
+
+
+
+        <!-- CONTACTO -->
+
+        <section id="contacto">
+
+            <h2>
+                Contacto
+            </h2>
+
+
+            <p>
+                Escríbenos para conocer nuestros
+                productos y diseños personalizados.
+            </p>
+
+
+            <p>
+                contacto@chocoart.com
+            </p>
+
+
+            <p>
+                WhatsApp: +57 300 123 4567
+            </p>
+
+        </section>
+
+
     </main>
 
+
+
+    <!-- =========================
+         PIE DE PÁGINA
+    ========================== -->
+
     <footer>
-        <p>Contacto: contacto@chocoarte.com | WhatsApp: +57 300 123 4567</p>
-        <p>&copy; 2026 ChocoArte. Todos los derechos reservados.</p>
+
+        <p>
+            <strong>ChocoArt</strong>
+        </p>
+
+
+        <p>
+            © 2026 ChocoArt. Todos los derechos reservados.
+        </p>
+
     </footer>
 
+
 </body>
+
 </html>
